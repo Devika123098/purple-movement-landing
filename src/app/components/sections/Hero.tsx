@@ -21,7 +21,7 @@ export function Hero() {
               Purple Movement
             </div>
             <div className="w-[831.17px] text-center justify-start text-white/75 text-xl font-thin font-['Poppins'] capitalize">
-              We're building more than a movement — we're uniting dreamers, doers, and
+              We&rsquo;re building more than a movement — we&rsquo;re uniting dreamers, doers, and
               changemakers to shape a borderless future. A future where what you create
               speaks louder than what you claim. Be part of the change.
             </div>
