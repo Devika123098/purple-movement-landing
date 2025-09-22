@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,68 +13,58 @@ export const Navbar = () => {
   const router = useRouter();
 
   const links = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/#about' },
-    { name: 'Events', href: '/#events' },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Events", href: "/#events" },
+    // { name: "Manifesto", href: "/#manifesto" },
+    // { name: "Vision", href: "/#vision" },
   ];
-
-  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+    };
 
-      if (window.scrollY < 100) {
-        setActiveSection('/');
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Function to handle smooth scrolling for hash links
+  const handleLinkClick = async (href: string) => {
+    setIsOpen(false); // Close mobile menu
+
+    if (href.startsWith('/#')) {
+      const targetId = href.substring(2); // Remove '/#'
+      
+      // If we're not on the home page, navigate there first
+      if (pathname !== '/') {
+        router.push(href);
         return;
       }
 
-      const sections = ['about', 'events'];
-      let currentActive = '';
-
-      sections.forEach((sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-          if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
-            currentActive = `/#${sectionId}`;
-          }
-        }
-      });
-
-      setActiveSection(currentActive);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleLinkClick = async (href: string) => {
-    setIsOpen(false);
-
-    if (href === '/') {
-      if (pathname === '/') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        router.push('/');
+      // If we're on the home page, smooth scroll to the section
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
-      return;
-    }
-
-    if (pathname !== '/') {
-      router.push(href);
-      return;
-    }
-
-    const targetId = href.replace('/#', '');
-    const element = document.getElementById(targetId);
-
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
+  // Check if link is active
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    if (href.startsWith('/#')) {
+      return pathname === '/'; // Hash links are active when on home page
+    }
+    return pathname.startsWith(href);
+  };
+
+  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
@@ -89,29 +79,24 @@ export const Navbar = () => {
     }
   }, [isOpen]);
 
+  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
     <nav
-      className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'backdrop-blur-lg bg-black/30 border-b border-white/10 shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`w-full fixed top-0 z-50 shadow-md scroll-smooth transition-all duration-300 
+      ${isScrolled ? "backdrop-blur-md bg-black/40" : "bg-transparent"}`}
     >
-      <div className="mx-auto flex items-center justify-between px-4 sm:px-8 md:px-12 py-6 h-[10vh]">
+      <div className="mx-auto flex items-center justify-between px-4 py-8 h-[10vh]">
         {/* Logo */}
-        <div className="md:px-4">
-          <Link
-            href="/"
-            className="cursor-pointer focus:outline-none rounded"
-          >
-            <Image
-              src="/logos/logo_pm.png"
-              width={100}
-              height={40}
+        <div className="md:px-10">
+          <Link href="/" className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 rounded">
+            <Image 
+              src="/logos/logo_pm.png" 
+              width={100} 
+              height={40} 
               alt="Purple Movement Logo"
               priority
               className="w-auto h-auto"
@@ -119,43 +104,38 @@ export const Navbar = () => {
             />
           </Link>
         </div>
-
+        
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-16 text-white">
-          <nav className="flex items-center gap-10" role="navigation">
+        <div className="hidden md:flex items-center gap-20 px-20 text-white">
+          <nav className="flex items-center gap-8" role="navigation">
             {links.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link.href);
+                  if (link.href.startsWith('/#')) {
+                    e.preventDefault();
+                    handleLinkClick(link.href);
+                  }
                 }}
-                className={`font-bold text-base sm:text-lg px-2 py-1 relative transition-all duration-300 focus:outline-none rounded group ${
-                  activeSection === link.href
-                    ? 'text-purple-500'
-                    : 'text-white hover:text-purple-400'
+                className={`font-bold text-lg text-white hover:text-[#6F00CD] transition-all ease duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded px-2 py-1 ${
+                  isActiveLink(link.href) 
+                    ? 'text-[#6F00CD]' 
+                    : 'text-white'
                 }`}
               >
                 {link.name}
-                <span
-                  className={`absolute left-0 -bottom-0.5 h-[2px] bg-purple-500 transition-all duration-300 ${
-                    activeSection === link.href
-                      ? 'w-full'
-                      : 'w-0 group-hover:w-full'
-                  }`}
-                ></span>
               </Link>
             ))}
           </nav>
         </div>
 
-        {/* Hamburger (Mobile) */}
+        {/* Hamburger (mobile only) */}
         <div className="md:hidden">
-          <button
+          <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 focus:outline-non rounded"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            className="p-2 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
           >
@@ -168,36 +148,34 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div
+        <div 
           id="mobile-menu"
-          className="md:hidden bg-black/90 backdrop-blur-lg shadow-md animate-slide-in-down"
+          className="md:hidden bg-black/90 backdrop-blur-md shadow-md"
           role="navigation"
+          aria-label="Mobile navigation"
         >
-          <ul className="flex flex-col divide-y divide-white/10">
+          <ul className="flex flex-col divide-y divide-gray-600">
             {links.map((link) => (
               <li key={link.name}>
                 <Link
                   href={link.href}
                   onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick(link.href);
+                    if (link.href.startsWith('/#')) {
+                      e.preventDefault();
+                      handleLinkClick(link.href);
+                    } else {
+                      setIsOpen(false);
+                    }
                   }}
-                  className={`block px-6 py-4 text-base font-medium transition-all duration-300 relative focus:outline-none ${
-                    activeSection === link.href
-                      ? 'text-purple-400 bg-purple-800/20'
-                      : 'text-white hover:bg-white/10'
+                  className={`block px-6 py-4 hover:bg-purple-500 hover:text-white transition focus:outline-none focus:bg-purple-600 ${
+                    isActiveLink(link.href) 
+                      ? 'text-[#6F00CD] bg-purple-900/30' 
+                      : 'text-white'
                   }`}
                 >
                   {link.name}
-                  <span
-                    className={`absolute bottom-1 left-6 right-6 h-0.5 bg-purple-500 transition-all duration-300 ${
-                      activeSection === link.href
-                        ? 'opacity-100'
-                        : 'opacity-0'
-                    }`}
-                  ></span>
                 </Link>
               </li>
             ))}

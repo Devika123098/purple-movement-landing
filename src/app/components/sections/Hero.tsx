@@ -1,47 +1,39 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 export function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
       <Image
         src="/images/hero-img.png"
         alt="Hero background"
         fill
-        className="object-cover w-full h-full mt-20"
+        className="object-cover w-full mt-20"
         priority
       />
-
-      {/* Content overlay */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 md:-mt-40">
-        <main className="flex flex-col items-center">
-          <div className="w-full flex flex-col justify-start items-center gap-4">
-            {/* Heading 1 */}
-            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold uppercase">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 transform scale-125 md:scale-125">
+        <main className="flex flex-col items-center md:static relative md:top-0 mt-[-175px]">
+          <div className="w-[866px] py-[5px] inline-flex flex-col justify-start items-center gap-4">
+            <div className="self-stretch text-center justify-start text-white text-4xl font-bold font-['Helvetica'] uppercase">
               We Are the
-            </h1>
-
-            {/* Heading 2 */}
-            <h2 className="bg-gradient-to-t from-[#8E00FF] to-[#D8B0FA] bg-clip-text text-transparent 
-              text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase font-montserrat">
+            </div>
+            <div className="self-stretch text-center justify-start bg-gradient-to-t from-[#8E00FF] to-[#D8B0FA] bg-clip-text
+    text-transparent text-7xl font-extrabold font-['Montserrat'] uppercase">
               Purple Movement
-            </h2>
-
-            {/* Subtext */}
-            <p className="text-white/75 text-base sm:text-lg md:text-xl font-thin font-poppins capitalize px-2">
-              A people-powered network that connects learners, professionals, and changemakers to overcome challenges, build confidence and create impact.
-            </p>
-
-            {/* CTA Button */}
-            <Link
-              href="/join"
-              className="mt-4 w-32 sm:w-40 h-10 px-4 py-2 bg-purple-700 rounded-md 
-              flex justify-center items-center hover:bg-black hover:border hover:border-purple-500 
-              transition-all duration-300 text-stone-50 text-base sm:text-lg font-semibold uppercase"
+            </div>
+            <div className="w-[831.17px] text-center justify-start text-white/75 text-xl font-thin font-['Poppins'] capitalize">
+              We're building more than a movement — we're uniting dreamers, doers, and
+              changemakers to shape a borderless future. A future where what you create
+              speaks louder than what you claim. Be part of the change.
+            </div>
+            <button
+              type="button"
+              className="w-40 h-10 p-2.5 bg-purple-700 rounded-[20px] inline-flex justify-center items-center gap-2.5"
+              aria-label="Join Us"
             >
-              Join Us
-            </Link>
+              <span className="text-center justify-start text-stone-50 text-xl font-semibold font-['Poppins'] uppercase">
+                Join Us
+              </span>
+            </button>
           </div>
         </main>
       </div>
