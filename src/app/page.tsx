@@ -1,7 +1,8 @@
 import { Navbar } from './components/layout/Navbar'
 // import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
-// import { VisionMission } from './components/sections/VisionMission'
+import { VisionMission } from './components/sections/VisionMission'
+// import { Pyramid } from './components/sections/Pyramid'
 // import { Manifesto } from './components/sections/Manifesto'
 // import { Events } from './components/sections/Events'
 // import { FAQ } from './components/sections/FAQ'
@@ -14,7 +15,8 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
-        {/* <VisionMission /> */}
+        <VisionMission />
+        {/* <Pyramid /> */}
         {/* <Manifesto /> */}
         {/* <Events /> */}
         {/* <FAQ /> */}

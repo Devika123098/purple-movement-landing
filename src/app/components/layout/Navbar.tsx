@@ -13,7 +13,7 @@ export const Navbar = () => {
   const router = useRouter();
 
   const links = [
-    { name: "Home", href: "/" },
+    { name: "Home", href: "/#" },
     { name: "About", href: "/#about" },
     { name: "Events", href: "/#events" },
     // { name: "Manifesto", href: "/#manifesto" },
