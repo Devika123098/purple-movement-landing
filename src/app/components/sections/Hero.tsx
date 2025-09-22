@@ -10,7 +10,7 @@ export function Hero() {
         className="object-cover w-full mt-20"
         priority
       />
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 transform scale-125 md:scale-125">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 transform">
         <main className="flex flex-col items-center md:static relative md:top-0 mt-[-175px]">
           <div className="w-[866px] py-[5px] inline-flex flex-col justify-start items-center gap-4">
             <div className="self-stretch text-center justify-start text-white text-4xl font-bold font-['Helvetica'] uppercase">
