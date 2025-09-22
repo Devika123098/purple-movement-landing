@@ -1,71 +1,36 @@
-# 💜 The Purple Movement – Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-**We are the Manifestors of Change.**
+## Getting Started
 
-The Purple Movement is a bold, open-source initiative by **GTech μLearn** — created to inspire, enable, and accelerate a generation of young changemakers. This is the official pre-launch website of the movement, designed to help you explore what we stand for and how you can be a part of it.
+First, run the development server:
 
-🔗 Website: [purple-movement.com](https://www.purple-movement.com)  
-📂 Docs & Source: [github.com/gtech-mulearn/Purple-Movement](https://github.com/gtech-mulearn/Purple-Movement)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🟣 The Manifesto
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-> We are the Manifestors of Change.
->
-> We are not waiting for the future.  
-> We are building it—with courage, code, creativity, and clarity.
->
-> We are the voice of a generation that refuses to settle.  
-> We are not consumers of culture.  
-> We are producers of purpose.  
-> We break barriers, not just for ourselves, but for every young mind daring to dream.
->
-> We believe in ecosystems that empower, not limit.  
-> In access, not gatekeeping.  
-> In bold visions, not borrowed templates.
->
-> We are here to reclaim the narrative—  
-> To give confidence to the curious,  
-> Networks to the bold,  
-> And direction to the determined.
->
-> This is The Purple Movement.  
-> A wave of youth power, purpose, and possibility.  
-> A signal that change is not coming—it’s already here.
->
-> This movement is not for the sidelines.  
-> It’s for the doers, the builders, the ones who say,  
-> “Why not us?”
->
-> We are the energy.  
-> We are the strategy.  
-> We are the spark.
->
-> **And it starts now.**
----
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🔓 Open Source & Community-Driven
+## Learn More
 
-The Purple Movement is fully open-source and built **by the community, for the community**. All website source code, content, and documentation are available here:
+To learn more about Next.js, take a look at the following resources:
 
-👉 [https://github.com/gtech-mulearn/Purple-Movement](https://github.com/gtech-mulearn/Purple-Movement)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
----
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 👥 Maintainers
+## Deploy on Vercel
 
-Maintained by [**GTech μLearn**](https://github.com/gtech-mulearn) and supported by the vibrant μLearn community.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
----
-
-## 📬 Connect With Us
-
-- 🌐 [mulearn.org](https://www.mulearn.org)
-- 💬 [discord.gg/mulearn](https://discord.gg/mulearn)
-- 🟣 [purple-movement.com](https://www.purple-movement.com)
-
----
-
-> 💡 _This is not just a website. It's a signal. The Movement has begun._
----
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
