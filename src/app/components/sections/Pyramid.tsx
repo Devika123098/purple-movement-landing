@@ -12,7 +12,7 @@ export const Pyramid = () => {
                 priority
             />
 
-            {/* overlayed boxes positioned relative to the image using percentages */}
+            {/* overlaid boxes positioned relative to the image using percentages */}
             <div className="absolute inset-0 z-10 pointer-events-none">
                 {/* Box 1 - top (adjust percentages as needed) */}
                 <div className="absolute left-156 top-20 w-60 text-center p-4 rounded-lg shadow-md pointer-events-auto scale-90">
@@ -20,8 +20,8 @@ export const Pyramid = () => {
                     Beyond Borders
                 </div>
                 <div className="mt-2 text-white text-sm font-semibold font-poppins leading-relaxed">
-                    "Early access to the right information is the key to a bright future."
-                    <br />We unite changemakers, professionals, and communities across the globe.
+                    &quot;Early access to the right information is the key to a bright future.&quot;
+                    <br />We unite change-makers, professionals, and communities across the globe.
                 </div>
                 </div>
                 {/* Box 2 - bottom-left */}
@@ -30,7 +30,7 @@ export const Pyramid = () => {
                     Beyond Gatekeepers
                 </div>
                 <div className="mt-2 text-white text-sm font-semibold font-poppins leading-relaxed text-right  ml-[-35px]">
-                    "Opportunities shouldn’t be locked by privilege." <br /> We remove barriers, democratize access, and let talent shine through proof of work.
+                    &quot;Opportunities shouldn&rsquo;t be locked by privilege.&quot; <br /> We remove barriers, democratize access, and let talent shine through proof of work.
                 </div>
                 </div>
 
@@ -40,7 +40,7 @@ export const Pyramid = () => {
                     Beyond Syllabus
                   </div>
                   <div className="mt-2 text-white text-sm font-semibold font-poppins leading-relaxed text-left mr-[-5px]">
-                    "Learning doesn't end where textbooks stop."
+                    &quot;Learning doesn&apos;t end where textbooks stop.&quot;
                     <br />We open doors to curiosity, skills, and real-world learning beyond the classroom.
                   </div>
                 </div>
