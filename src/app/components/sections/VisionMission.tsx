@@ -1,6 +1,6 @@
 export const VisionMission = () => {
     return (
-        <section className="flex flex-col md:flex-row items-center justify-center gap-8 ml-[-7px]">
+        <section className="flex flex-col md:flex-row items-center justify-center gap-8 ml-[-7px]" id="about" aria-label="Vision and Mission Section">
             {/* Left column - Vision */}
             <div className="flex flex-col items-start w-[477px]">
                 <h2 className="text-white text-5xl font-bold font-['Montserrat'] capitalize">VISION</h2>
