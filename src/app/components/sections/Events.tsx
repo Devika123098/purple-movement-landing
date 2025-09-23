@@ -18,7 +18,8 @@ export const Events = () => {
       {/* Events Container with overlapping layout */}
       <div className="relative flex items-center justify-center mt-8">
         {/* Enter the Flow Event - Left Side */}
-        <div className="w-72 h-80 opacity-25 bg-gray-900 rounded-lg shadow-[0px_3.572192668914795px_3.572192668914795px_0px_rgba(0,0,0,0.25)] border-[0.45px] border-white/50 relative hover:opacity-100 hover:scale-105 transition-all duration-300 z-10 -mr-14 group cursor-pointer">
+        <div className="w-72 h-80 opacity-25 bg-gray-900 rounded-lg shadow-md shadow-black/25
+ border-[0.45px] border-white/50 relative hover:opacity-100 hover:scale-105 transition-all duration-300 z-10 -mr-14 group cursor-pointer">
           <div className="relative w-full h-full rounded-lg overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-gray-900/50" />
             <div className="flex flex-col items-center justify-center h-full p-6">
@@ -28,7 +29,7 @@ export const Events = () => {
                   alt="Enter the Flow Event"
                   width={140}
                   height={120}
-                  className="object-contain rounded-lg"
+                  className="object-contain rounded-lg border-[0.5px] border-white/50"
                 />
               </div>
             </div>
@@ -54,7 +55,7 @@ export const Events = () => {
         </div>
 
         {/* Saddle Up Event - Center (Main) */}
-        <div className="w-96 h-96 bg-gray-900 rounded-[10px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border-[0.50px] border-white/50 relative z-20 group cursor-pointer hover:scale-105 transition-all duration-300">
+        <div className="w-96 h-96 bg-gray-900 rounded-[10px] shadow-md shadow-black/25 border border-white/50 relative z-20 group cursor-pointer hover:scale-105 transition-transform duration-300">
           <div className="relative w-full h-full rounded-[10px] overflow-hidden">
             <div className="flex flex-col items-center justify-center h-full p-6">
               <div className="mb-18">
@@ -63,7 +64,7 @@ export const Events = () => {
                   alt="Saddle Up Event"
                   width={175}
                   height={200}
-                  className="object-contain rounded-lg"
+                  className="object-contain rounded-lg border-[0.5px] border-white/50"
                 />
               </div>
             </div>
@@ -90,7 +91,7 @@ export const Events = () => {
         </div>
 
         {/* Stay Tuned Event - Right Side */}
-        <div className="w-72 h-80 opacity-25 bg-gray-900 rounded-lg shadow-[0px_3.572192668914795px_3.572192668914795px_0px_rgba(0,0,0,0.25)] border-[0.45px] border-white/50 flex flex-col items-center justify-center hover:opacity-100 hover:scale-105 transition-all duration-300 z-10 -ml-16 group cursor-pointer relative">
+        <div className="w-72 h-80 opacity-25 bg-gray-900 rounded-lg shadow-md shadow-black/25 border border-white/50 flex flex-col items-center justify-center hover:opacity-100 hover:scale-105 transition-all duration-300 z-10 -ml-16 group cursor-pointer relative">
           <div className="ml-10 text-center text-white/60 text-3xl font-semibold font-montserrat">
             Stay Tuned...
           </div>
