@@ -51,7 +51,6 @@ export const Manifesto = () => {
 
   const lineOffsets = flatText.map((item, i) => {
     const section = item.section;
-    const prevSections = sections.slice(0, section).reduce((a, b) => a + b.length, 0);
     const linesBefore = i;
     const gapsBefore = section; 
     return linesBefore * lineHeight + gapsBefore * sectionGap;
@@ -60,12 +59,12 @@ export const Manifesto = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % flatText.length);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full h-[941px] py-10 bg-black flex flex-col justify-center items-center gap-5">
+    <div className="w-full py-10 bg-black flex flex-col justify-center items-center gap-5">
       {/* Title */}
       <div className="w-96 h-10 text-center flex justify-center items-center">
         <span className="text-white text-5xl font-bold font-montserrat">
