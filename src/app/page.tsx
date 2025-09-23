@@ -1,5 +1,5 @@
 import { Navbar } from './components/layout/Navbar'
-// import { Footer } from './components/layout/Footer'
+import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
 import { VisionMission } from './components/sections/VisionMission'
 import { Pyramid } from './components/sections/Pyramid'
@@ -23,7 +23,7 @@ export default function HomePage() {
         <Contact />
         <CallToAction />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

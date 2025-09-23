@@ -13,7 +13,7 @@ export const Navbar = () => {
   const router = useRouter();
 
   const links = [
-    { name: "Home", href: "/#" },
+    { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
     { name: "Events", href: "/#events" },
     // { name: "Manifesto", href: "/#manifesto" },
@@ -31,18 +31,34 @@ export const Navbar = () => {
 
   // Function to handle smooth scrolling for hash links
   const handleLinkClick = async (href: string) => {
-    setIsOpen(false); // Close mobile menu
+    setIsOpen(false); // Close mobile menu 
 
-    if (href.startsWith('/#')) {
-      const targetId = href.substring(2); // Remove '/#'
-      
-      // If we're not on the home page, navigate there first
-      if (pathname !== '/') {
-        router.push(href);
-        return;
+    // If it's the home link, scroll to top or navigate to home
+    if (href === '/') {
+      if (pathname === '/') {
+        // If we're already on home page, scroll to top
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        // If we're on a different page, navigate to home
+        router.push('/');
       }
+      return;
+    }
 
-      // If we're on the home page, smooth scroll to the section
+    // If we're not on the home page, navigate there first
+    if (pathname !== '/') {
+      router.push(href);
+      return;
+    }
+
+    // Extract the target ID from the href (remove /# prefix)
+    const targetId = href.replace('/#', '');
+    
+    // If we're on the home page, smooth scroll to the section
+    if (targetId) {
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({
@@ -56,12 +72,9 @@ export const Navbar = () => {
   // Check if link is active
   const isActiveLink = (href: string) => {
     if (href === '/') {
-      return pathname === '/';
+      return false; // Home link should never appear active/purple
     }
-    if (href.startsWith('/#')) {
-      return pathname === '/'; // Hash links are active when on home page
-    }
-    return pathname.startsWith(href);
+    return pathname.startsWith(href.replace('/#', '/'));
   };
 
   // Close mobile menu when clicking outside
@@ -116,9 +129,12 @@ export const Navbar = () => {
                   if (link.href.startsWith('/#')) {
                     e.preventDefault();
                     handleLinkClick(link.href);
+                  } else if (link.href === '/') {
+                    e.preventDefault();
+                    handleLinkClick(link.href);
                   }
                 }}
-                className={`font-bold text-lg text-white hover:text-[#6F00CD] transition-all ease duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded px-2 py-1 ${
+                className={`font-bold text-lg hover:text-[#6F00CD] transition-all ease duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded px-2 py-1 ${
                   isActiveLink(link.href) 
                     ? 'text-[#6F00CD]' 
                     : 'text-white'
@@ -163,6 +179,9 @@ export const Navbar = () => {
                   href={link.href}
                   onClick={(e) => {
                     if (link.href.startsWith('/#')) {
+                      e.preventDefault();
+                      handleLinkClick(link.href);
+                    } else if (link.href === '/') {
                       e.preventDefault();
                       handleLinkClick(link.href);
                     } else {

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const Events = () => {
   return (
-    <div className="w-full py-16 bg-black flex flex-col justify-center items-center gap-8">
+    <div className="w-full py-16 bg-black flex flex-col justify-center items-center gap-8" id="events">
       <div className="text-center text-white text-5xl font-semibold font-montserrat">
         Events
       </div>
