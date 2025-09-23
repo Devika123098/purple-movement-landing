@@ -20,9 +20,35 @@ export const Navbar = () => {
     // { name: "Vision", href: "/#vision" },
   ];
 
+  const [activeSection, setActiveSection] = useState('');
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Update active section based on scroll position
+      if (window.scrollY < 100) {
+        setActiveSection('/');
+        return;
+      }
+
+      // Check which section is currently in view
+      const sections = ['about', 'events']; // Add other section IDs here
+      let currentActive = '';
+      
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          // Section is considered active if it's center is in viewport
+          if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+            currentActive = `/#${sectionId}`;
+          }
+        }
+      });
+      
+      setActiveSection(currentActive);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -69,12 +95,27 @@ export const Navbar = () => {
     }
   };
 
-  // Check if link is active
+  // Check if link is active based on current scroll position
   const isActiveLink = (href: string) => {
+    if (typeof window === 'undefined') return false;
+    
     if (href === '/') {
-      return false; // Home link should never appear active/purple
+      // Home is active when at the top of the page
+      return window.scrollY < 100;
     }
-    return pathname.startsWith(href.replace('/#', '/'));
+    
+    // For hash links, check if the corresponding section is in view
+    const targetId = href.replace('/#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      // Consider a section active if it's in the viewport
+      return rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2;
+    }
+    
+    return false;
   };
 
   // Close mobile menu when clicking outside
@@ -134,13 +175,19 @@ export const Navbar = () => {
                     handleLinkClick(link.href);
                   }
                 }}
-                className={`font-bold text-lg hover:text-[#6F00CD] transition-all ease duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded px-2 py-1 ${
-                  isActiveLink(link.href) 
+                className={`font-bold text-lg hover:text-[#6F00CD] transition-all ease duration-300 focus:outline-none rounded px-2 py-1 relative ${
+                  activeSection === link.href
                     ? 'text-[#6F00CD]' 
                     : 'text-white'
                 }`}
               >
                 {link.name}
+                {/* Animated underline */}
+                <span 
+                  className={`absolute bottom-0 left-0 h-0.5 bg-[#6F00CD] transition-all duration-300 ${
+                    activeSection === link.href ? 'w-full' : 'w-0'
+                  }`}
+                />
               </Link>
             ))}
           </nav>
@@ -188,13 +235,19 @@ export const Navbar = () => {
                       setIsOpen(false);
                     }
                   }}
-                  className={`block px-6 py-4 hover:bg-purple-500 hover:text-white transition focus:outline-none focus:bg-purple-600 ${
-                    isActiveLink(link.href) 
+                  className={`block px-6 py-4 hover:bg-purple-500 hover:text-white transition focus:outline-none focus:bg-purple-600 relative ${
+                    activeSection === link.href
                       ? 'text-[#6F00CD] bg-purple-900/30' 
                       : 'text-white'
                   }`}
                 >
                   {link.name}
+                  {/* Mobile underline indicator */}
+                  <span 
+                    className={`absolute bottom-2 left-6 right-6 h-0.5 bg-[#6F00CD] transition-all duration-300 ${
+                      activeSection === link.href ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
                 </Link>
               </li>
             ))}
