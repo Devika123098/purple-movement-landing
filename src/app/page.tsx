@@ -5,7 +5,7 @@ import { VisionMission } from './components/sections/VisionMission'
 import { Pyramid } from './components/sections/Pyramid'
 import { Manifesto } from './components/sections/Manifesto'
 import { Events } from './components/sections/Events'
-// import { FAQ } from './components/sections/FAQ'
+import { FAQ } from './components/sections/FAQ'
 // import { Contact } from './components/sections/Contact'
 // import { CallToAction } from './components/sections/CallToAction'
 
@@ -19,7 +19,7 @@ export default function HomePage() {
         <Pyramid />
         <Manifesto />
         <Events />
-        {/* <FAQ /> */}
+        <FAQ />
         {/* <Contact /> */}
         {/* <CallToAction /> */}
       </main>
