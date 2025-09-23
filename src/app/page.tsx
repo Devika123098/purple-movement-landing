@@ -7,7 +7,7 @@ import { Manifesto } from './components/sections/Manifesto'
 import { Events } from './components/sections/Events'
 import { FAQ } from './components/sections/FAQ'
 import { Contact } from './components/sections/Contact'
-// import { CallToAction } from './components/sections/CallToAction'
+import { CallToAction } from './components/sections/CallToAction'
 
 export default function HomePage() {
   return (
@@ -21,7 +21,7 @@ export default function HomePage() {
         <Events />
         <FAQ />
         <Contact />
-        {/* <CallToAction /> */}
+        <CallToAction />
       </main>
       {/* <Footer /> */}
     </div>
