@@ -1,6 +1,6 @@
 export const VisionMission = () => {
     return (
-        <section className="flex flex-col md:flex-row items-center justify-center gap-8">
+        <section className="flex flex-col md:flex-row items-center justify-center gap-8 ml-[-7px]">
             {/* Left column - Vision */}
             <div className="flex flex-col items-start w-[477px]">
                 <h2 className="text-white text-5xl font-bold font-['Montserrat'] capitalize">VISION</h2>
