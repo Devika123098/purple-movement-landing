@@ -95,29 +95,6 @@ export const Navbar = () => {
     }
   };
 
-  // Check if link is active based on current scroll position
-  const isActiveLink = (href: string) => {
-    if (typeof window === 'undefined') return false;
-    
-    if (href === '/') {
-      // Home is active when at the top of the page
-      return window.scrollY < 100;
-    }
-    
-    // For hash links, check if the corresponding section is in view
-    const targetId = href.replace('/#', '');
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      // Consider a section active if it's in the viewport
-      return rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2;
-    }
-    
-    return false;
-  };
-
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
