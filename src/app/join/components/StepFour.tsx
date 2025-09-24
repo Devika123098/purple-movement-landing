@@ -3,11 +3,10 @@
 import { FaWhatsapp } from "react-icons/fa6"
 
 interface StepFourProps {
-    onComplete?: () => void
     userName?: string
 }
 
-export default function StepFour({ onComplete, userName = "Friend" }: StepFourProps) {
+export default function StepFour({ userName = "Friend" }: StepFourProps) {
     const handleWhatsAppJoin = () => {
         // Handle WhatsApp group join logic here
         window.open('https://chat.whatsapp.com/your-group-link', '_blank')
@@ -26,7 +25,7 @@ export default function StepFour({ onComplete, userName = "Friend" }: StepFourPr
                     {/* Description */}
                     <div className="max-w-[463px] mx-auto">
                         <p className="text-white text-xl font-normal font-poppins capitalize">
-                            We've received your message and our team will respond shortly.
+                            We&apos;ve received your message and our team will respond shortly.
                         </p>
                     </div>
                     

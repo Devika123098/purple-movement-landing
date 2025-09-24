@@ -52,11 +52,6 @@ export default function JoinUsPage() {
         }, 300)
     }
 
-    const handleComplete = () => {
-        // Handle completion logic here
-        console.log('Form completed!')
-    }
-
     const renderCurrentStep = () => {
         switch(currentStep) {
             case 1:
@@ -66,7 +61,7 @@ export default function JoinUsPage() {
             case 3:
                 return <StepThree selectedFromPrevious={selectedFromPrevious} onNext={handleNextStep} onBack={handleBackStep} onNameChange={setUserName} />
             case 4:
-                return <StepFour onComplete={handleComplete} userName={userName} />
+                return <StepFour userName={userName} />
             default:
                 return <StepOne selectedOption={selectedOption} onCardClick={handleCardClick} />
         }
