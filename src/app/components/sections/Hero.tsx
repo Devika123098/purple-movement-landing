@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function Hero() {
   return (
@@ -27,12 +28,12 @@ export function Hero() {
             </div>
             <button
               type="button"
-              className="w-40 h-10 p-2.5 bg-purple-700 rounded-[20px] inline-flex justify-center items-center gap-2.5"
+              className="w-40 h-10 p-2.5 bg-purple-700 rounded-[20px] inline-flex justify-center items-center gap-2.5 hover:bg-black hover:border hover:border-purple-500 transition-all duration-300"
               aria-label="Join Us"
             >
-              <span className="text-center justify-start text-stone-50 text-xl font-semibold font-['Poppins'] uppercase">
+              <Link href={`/join`} className="text-center justify-start text-stone-50 text-xl font-semibold font-['Poppins'] uppercase">
                 Join Us
-              </span>
+              </Link>
             </button>
           </div>
         </main>
