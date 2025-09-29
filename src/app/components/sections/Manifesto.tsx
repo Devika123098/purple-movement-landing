@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 const sections = [
   [
@@ -100,15 +100,15 @@ export const Manifesto = () => {
                     ? "text-violet-400 font-bold font-poppins scale-105"
                     : "text-white opacity-60 italic scale-95"
                 }`}
-              style={{
+             style={{
                 fontSize: "16px",
-                height: `${lineHeight}px`,
+                minHeight: `${lineHeight}px`,
                 marginBottom:
-                  index < flatText.length - 1 &&
-                  flatText[index + 1].section !== item.section
-                    ? `${sectionGap}px`
-                    : "0px",
-              }}
+                 index < flatText.length - 1 &&
+                flatText[index + 1].section !== item.section
+                ? `${sectionGap}px`
+                : "0px",
+}}
             >
               {item.line}
             </div>
