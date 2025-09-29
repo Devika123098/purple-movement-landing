@@ -1,9 +1,11 @@
-import * as React from "react";
 
 const Pyramid = (props: any) => (
+ 
   <div className="w-full flex items-center justify-center px-4 py-4">
-    <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-4xl">
+   
+    <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[650px]">
       <svg
+      
         viewBox="85 0 676 600"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
