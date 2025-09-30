@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable} ${poppins.variable} ${ibmPlexSansDevanagari.variable}`}>
-      <body className="bg-slate-950 font-inter">
+      <body className="bg-slate-950 font-inter w-full min-h-screen">
         {children}
       </body>
     </html>
