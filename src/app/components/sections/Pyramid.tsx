@@ -1,5 +1,5 @@
 
-const Pyramid = (props: any) => (
+const Pyramid = () => (
  
   <div className="w-full flex items-center justify-center px-4 py-4">
    
@@ -10,7 +10,7 @@ const Pyramid = (props: any) => (
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
-        {...props}
+
       >
     <path
       d="M418.678 366.89L266.674 282.251C261.738 279.503 260.057 273.214 262.964 268.37L414.96 15.008C418.848 8.52778 428.242 8.53538 432.119 15.0218L583.563 268.389C586.455 273.228 584.778 279.499 579.858 282.249L428.421 366.882C425.394 368.574 421.707 368.577 418.678 366.89Z"
