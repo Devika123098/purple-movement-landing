@@ -26,7 +26,7 @@ export const Contact = () => {
 
         {/* Subtext */}
         <p className="text-sm sm:text-base md:text-lg text-white/80 font-medium font-poppins max-w-xl leading-relaxed">
-          We're here to help — reach out anytime!
+          We&apos;re here to help — reach out anytime!
         </p>
 
         {/* Input */}

@@ -22,7 +22,7 @@ export default function StepFour({ userName = "Friend" }: StepFourProps) {
 
           {/* Subtext */}
           <p className="text-sm sm:text-base md:text-lg font-poppins text-white/80 max-w-xl mx-auto leading-relaxed">
-            We've received your message. <br className="hidden sm:inline" />
+            We&apos;ve received your message. <br className="hidden sm:inline" />
             Our team will get back to you shortly.
           </p>
 
