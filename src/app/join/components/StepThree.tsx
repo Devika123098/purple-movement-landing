@@ -1,6 +1,122 @@
 'use client'
 
 import { useState } from 'react'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+
+// Custom styles for the phone input to match dark theme
+const phoneInputStyles = `
+  .react-tel-input {
+    width: 100% !important;
+  }
+
+  .react-tel-input .form-control {
+    width: 100% !important;
+    background-color: transparent !important;
+    border: 1px solid white !important;
+    border-left: none !important;
+    color: white !important;
+    border-radius: 0 6px 6px 0 !important;
+    height: 44px !important;
+  }
+  
+  .react-tel-input .form-control:focus {
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5) !important;
+  }
+  
+  .react-tel-input .flag-dropdown {
+    background-color: transparent !important;
+    border: 1px solid white !important;
+    border-right: 1px solid white !important;
+    border-radius: 6px 0 0 6px !important;
+    height: 44px !important;
+  }
+  
+  .react-tel-input .flag-dropdown:hover {
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .flag-dropdown.open {
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .selected-flag {
+    height: 44px !important;
+    padding: 0 12px !important;
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .selected-flag:hover {
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .country-list {
+    background-color: #374151 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 6px !important;
+    color: white !important;
+  }
+  
+  .react-tel-input .country-list::-webkit-scrollbar {
+    width: 2px !important;
+  }
+
+  .react-tel-input .country-list::-webkit-scrollbar-track {
+    background: rgb(33, 1, 46) !important;
+  }
+
+  .react-tel-input .country-list::-webkit-scrollbar-thumb {
+    background: rgb(92, 0, 128) !important;
+    border-radius: 20px !important;
+  }
+  
+  .react-tel-input .country-list .country {
+    background-color: #374151 !important;
+    color: white !important;
+  }
+  
+  .react-tel-input .country-list .country:hover {
+    background-color: #4b5563 !important;
+  }
+  
+  .react-tel-input .country-list .country.highlight {
+    background-color: #8b5cf6 !important;
+  }
+  
+  .react-tel-input .country-list .search {
+    background-color: #374151 !important;
+    border: 1px solid #6b7280 !important;
+    color: white !important;
+  }
+  
+  .react-tel-input .country-list .search::placeholder {
+    color: #9ca3af !important;
+  }
+  
+  .react-tel-input.error .form-control {
+    border-color: #ef4444 !important;
+  }
+  
+  .react-tel-input.error .flag-dropdown {
+    border-color: #ef4444 !important;
+  }
+  
+  .react-tel-input.error .form-control:focus {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5) !important;
+  }
+  
+  .react-tel-input.disabled .form-control {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+  
+  .react-tel-input.disabled .flag-dropdown {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+`
 
 interface StepThreeProps {
   selectedFromPrevious?: string | null
@@ -21,15 +137,51 @@ export default function StepThree({
   const [notInterested, setNotInterested] = useState(false)
   const [interested, setInterested] = useState(false)
 
-  const isFormValid = name.trim() && email.trim() && phone.trim()
+  // Validation functions
+  const validateName = (name: string) => {
+    if (!name.trim()) return "Name is required"
+    if (name.trim().length < 2) return "Name must be at least 2 characters"
+    if (!/^[a-zA-Z\s]+$/.test(name.trim())) return "Name can only contain letters and spaces"
+    return ""
+  }
+
+  const validateEmail = (email: string) => {
+    if (!email.trim()) return "Email is required"
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email.trim())) return "Please enter a valid email address"
+    return ""
+  }
+
+  const validatePhone = (phone: string) => {
+    if (!phone.trim()) return "Phone number is required"
+    // react-phone-input-2 returns formatted phone with country code
+    if (phone.length < 7) return "Phone number is too short"
+    if (phone.length > 15) return "Phone number is too long"
+    return ""
+  }
+
+  // Get validation errors (only show for touched fields)
+  const nameError = !notInterested && touchedFields.name ? validateName(name) : ""
+  const emailError = !notInterested && touchedFields.email ? validateEmail(email) : ""
+  const phoneError = !notInterested && touchedFields.phone ? validatePhone(phone) : ""
+
+  const isFormValid = notInterested || (name.trim() && email.trim() && phone.trim() && !nameError && !emailError && !phoneError)
 
   return (
     <div className="w-full px-4 sm:px-6 space-y-8">
-      {/* Header & Checkboxes */}
+      {/* Inject custom styles */}
+      <style dangerouslySetInnerHTML={{ __html: phoneInputStyles }} />
+      
+      {/* Header & Description */}
       <div className="space-y-6">
-        <h1 className="text-2xl sm:text-4xl font-bold font-montserrat text-white capitalize text-left">
-          Your Details
-        </h1>
+        <div className="max-w-[864px] w-full mx-auto space-y-3">
+          <h1 className="text-2xl sm:text-4xl font-bold font-montserrat text-white capitalize text-left pl-3 sm:pl-4">
+            Tell Us About You
+          </h1>
+          <div className="justify-start text-white text-base font-normal font-montserrat capitalize pl-3 sm:pl-4">
+            We'd love to hear from you, or you can stay anonymous.
+          </div>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-16 items-start sm:items-center">
           {/* Not Interested */}
@@ -124,12 +276,17 @@ export default function StepThree({
           <label className="block text-sm sm:text-lg text-white font-bold font-montserrat capitalize">
             Phone:
           </label>
-          <input
-            type="tel"
+          <PhoneInput
+            country={'us'}
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="w-full h-11 px-4 text-sm sm:text-base bg-transparent border border-white rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-violet-700"
-            placeholder="Enter your phone number"
+            onChange={(value) => onChange({ phone: value })}
+            onFocus={() => setTouchedFields(prev => ({ ...prev, phone: true }))}
+            disabled={notInterested}
+            containerClass={`w-full ${phoneError && !notInterested ? 'error' : ''} ${notInterested ? 'disabled' : ''}`}
+            inputProps={{
+              placeholder: 'Enter your phone number',
+              disabled: notInterested,
+            }}
           />
         </div>
       </div>
