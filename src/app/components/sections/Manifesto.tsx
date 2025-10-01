@@ -95,7 +95,6 @@ export const Manifesto = () => {
 
   return (
     <div className="w-full py-10 bg-black flex flex-col justify-center items-center gap-6 px-4">
-      {/* Title */}
       <div className="max-w-full text-center">
         <span className="text-white text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat">
           Our{" "}
