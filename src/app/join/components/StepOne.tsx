@@ -13,10 +13,10 @@ export default function StepOne({
 }: StepOneProps) {
   const options = [
     {
-      id: 'organization',
-      label: 'Organization',
-      text: "We're building more than a movement — we're uniting dreamers, doers, and changemakers to shape a borderless future. A future where what you create speaks louder than what you claim. Be part of the change.",
-      svgPath: '/svgs/org.svg',
+      id: 'individual',
+      label: 'Individual',
+      text: "Students, creators, and entrepreneurs collaborating, contributing, and networking to drive meaningful impact together.",
+      svgPath: '/svgs/ind.svg',
     },
     {
       id: 'organization',

@@ -15,6 +15,7 @@ const supportLinks = [
 ];
 
 export const Footer = () => {
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   return (
     <>
       <div className="w-full h-20 bg-gradient-to-b from-black to-slate-950" />

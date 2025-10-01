@@ -118,6 +118,120 @@ const phoneInputStyles = `
   }
 `
 
+// Custom styles for the phone input to match dark theme
+const phoneInputStyles = `
+  .react-tel-input {
+    width: 100% !important;
+  }
+
+  .react-tel-input .form-control {
+    width: 100% !important;
+    background-color: transparent !important;
+    border: 1px solid white !important;
+    border-left: none !important;
+    color: white !important;
+    border-radius: 0 6px 6px 0 !important;
+    height: 44px !important;
+  }
+  
+  .react-tel-input .form-control:focus {
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5) !important;
+  }
+  
+  .react-tel-input .flag-dropdown {
+    background-color: transparent !important;
+    border: 1px solid white !important;
+    border-right: 1px solid white !important;
+    border-radius: 6px 0 0 6px !important;
+    height: 44px !important;
+  }
+  
+  .react-tel-input .flag-dropdown:hover {
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .flag-dropdown.open {
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .selected-flag {
+    height: 44px !important;
+    padding: 0 12px !important;
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .selected-flag:hover {
+    background-color: transparent !important;
+  }
+  
+  .react-tel-input .country-list {
+    background-color: #374151 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 6px !important;
+    color: white !important;
+  }
+  
+  .react-tel-input .country-list::-webkit-scrollbar {
+    width: 2px !important;
+  }
+
+  .react-tel-input .country-list::-webkit-scrollbar-track {
+    background: rgb(33, 1, 46) !important;
+  }
+
+  .react-tel-input .country-list::-webkit-scrollbar-thumb {
+    background: rgb(92, 0, 128) !important;
+    border-radius: 20px !important;
+  }
+  
+  .react-tel-input .country-list .country {
+    background-color: #374151 !important;
+    color: white !important;
+  }
+  
+  .react-tel-input .country-list .country:hover {
+    background-color: #4b5563 !important;
+  }
+  
+  .react-tel-input .country-list .country.highlight {
+    background-color: #8b5cf6 !important;
+  }
+  
+  .react-tel-input .country-list .search {
+    background-color: #374151 !important;
+    border: 1px solid #6b7280 !important;
+    color: white !important;
+  }
+  
+  .react-tel-input .country-list .search::placeholder {
+    color: #9ca3af !important;
+  }
+  
+  .react-tel-input.error .form-control {
+    border-color: #ef4444 !important;
+  }
+  
+  .react-tel-input.error .flag-dropdown {
+    border-color: #ef4444 !important;
+  }
+  
+  .react-tel-input.error .form-control:focus {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5) !important;
+  }
+  
+  .react-tel-input.disabled .form-control {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+  
+  .react-tel-input.disabled .flag-dropdown {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+`
+
 interface StepThreeProps {
   selectedFromPrevious?: string | null
   onNext?: () => void
